@@ -24,7 +24,12 @@ public class Board : IBoard
 
     public static Board CreateEmpty(int width, int height)
     {
-        return new Board(width, height);
+        var board = new Board(width, height);
+        //board._squares[0][4] = new Square(true, 'X');
+        //board._squares[0][3] = new Square(true, 'X');
+        //board._squares[0][2] = new Square(true, 'X');
+
+        return board;
     }
 
     public Square[][] GetSquares()

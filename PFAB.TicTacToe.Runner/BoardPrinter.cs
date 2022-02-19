@@ -42,7 +42,21 @@ internal class BoardPrinter
         Console.WriteLine(
             $"{LeftT}{verticalLine}{string.Join(null, Enumerable.Repeat($"{Cross}{verticalLine}", row.Length))}{RightT}");
         var printableRow = string.Join($" {Vertical} ", row.Select(c => c.IsOccupied ? c.Symbol : ' '));
-        Console.WriteLine($"  {(char)('A' + rowIndex)} {Vertical} {printableRow} {Vertical}");
+
+        Console.Write($"  {(char)('A' + rowIndex)} {Vertical}");
+        for (var i = 0; i < row.Length; i++)
+        {
+            var square = row[i];
+            if (square.IsHighlighted)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+            }
+            Console.Write($" {(square.IsOccupied ? square.Symbol : ' ')} ");
+            Console.ResetColor();
+            Console.Write($"{Vertical}");
+        }
+        Console.WriteLine();
+        //Console.WriteLine($"  {(char)('A' + rowIndex)} {Vertical} {printableRow} {Vertical}");
     }
 
     internal static class TablePrintingCharacters

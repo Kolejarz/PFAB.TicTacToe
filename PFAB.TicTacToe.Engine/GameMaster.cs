@@ -17,14 +17,16 @@ namespace PFAB.TicTacToe.Engine
         {
             _winnerLookup = winnerLookup;
             Board = Board.CreateEmpty(4, 4);
+            CurrentPlayer = 'X';
         }
+
+        public char CurrentPlayer { get; private set; }
 
         public Board Board { get; private set; }
 
         public void MakeMove(Point coordinates)
         {
             var currentBoard = Board.GetSquares();
-            var currentPlayer = _players[_counter % 2];
 
             if (currentBoard[coordinates.Y][coordinates.X].IsOccupied)
             {
@@ -43,8 +45,9 @@ namespace PFAB.TicTacToe.Engine
                 newBoard.Add(rowCopy.ToArray());
             }
 
-            newBoard[coordinates.Y][coordinates.X] = new Square(true, currentPlayer, true);
+            newBoard[coordinates.Y][coordinates.X] = new Square(true, CurrentPlayer, true);
             _counter++;
+            CurrentPlayer = _players[_counter % 2];
             Board = new Board(newBoard.ToArray());
         }
 

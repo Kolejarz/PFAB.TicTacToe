@@ -29,6 +29,9 @@ namespace PFAB.TicTacToe.Engine
                 for (var x = 0; x < row.Length; x++)
                 {
                     var square = squares[y][x];
+
+                    if (!square.IsOccupied) continue;
+
                     foreach (var direction in _directions)
                     {
                         for (var i = 1; i < _winningSequenceLength; i++)

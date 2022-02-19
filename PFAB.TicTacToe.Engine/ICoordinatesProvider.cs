@@ -4,5 +4,5 @@ namespace PFAB.TicTacToe.Engine;
 
 public interface ICoordinatesProvider
 {
-    Point GetCoordinates();
+    Point GetCoordinates(IBoard board, char player);
 }

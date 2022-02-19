@@ -5,7 +5,7 @@ namespace PFAB.TicTacToe.Runner
 {
     internal class ConsoleMoveReader : ICoordinatesProvider
     {
-        public Point GetCoordinates()
+        public Point GetCoordinates(IBoard _, char _1)
         {
             Console.Write("Please enter your move: ");
             var input = Console.ReadLine();
